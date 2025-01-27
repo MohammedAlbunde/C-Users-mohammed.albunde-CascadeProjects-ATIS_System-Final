@@ -1,0 +1,38 @@
+VHF Radio Connection Diagram
+========================
+
+[Computer]                              [VHF Radio]
+Audio Out (3.5mm) ---------------------- Audio In
+USB Port ---------- USB-Serial --------- PTT Control
+                    Converter
+
+Audio Connection:
+---------------
+Computer         Radio
+3.5mm Out ------- Audio In
+Ground --------- Ground
+
+PTT Connection:
+-------------
+USB-Serial       Radio
+DTR/RTS -------- PTT
+Ground --------- Ground
+
+Settings:
+--------
+1. Radio Configuration:
+   - Frequency: As assigned (118.0-136.975 MHz)
+   - Mode: AM
+   - Squelch: Adjusted for clear signal
+   - Input: External audio enabled
+   - PTT: External control enabled
+
+2. Audio Levels:
+   - Computer: 80% volume
+   - Radio: Input gain adjusted for clear transmission
+   - No distortion or clipping
+
+3. PTT Control:
+   - DTR or RTS for keying
+   - Active low or high (check radio manual)
+   - Clean switching, no RF feedback

@@ -1,0 +1,25 @@
+AWOS Connection Diagram
+===================
+
+[Computer]     [RS-232 to USB Converter]     [Vaisala AWOS]
+   USB Port -------- USB End |  RS-232 End -------- DATA Port
+                            |
+                    [Note COM Port Number]
+
+Physical Connections:
+-------------------
+1. AWOS DATA Port (DB9 Female)
+   Pin 2: RX (Receive)
+   Pin 3: TX (Transmit)
+   Pin 5: GND (Ground)
+
+2. USB Port on Computer
+   - Use any available USB port
+   - Note down port number from Device Manager
+
+Cable Specifications:
+-------------------
+- RS-232 to USB converter
+- Maximum length: 15 meters
+- Shielded cable recommended
+- Secure connections with screws
