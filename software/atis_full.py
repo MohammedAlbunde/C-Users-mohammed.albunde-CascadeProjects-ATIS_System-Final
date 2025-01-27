@@ -7,13 +7,15 @@ os.environ['QT_QPA_PLATFORM'] = 'windows'
 
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
                            QHBoxLayout, QLabel, QPushButton, QFrame, QGridLayout,
-                           QComboBox, QTextEdit, QTabWidget, QGroupBox, QCheckBox, QDoubleSpinBox)
+                           QComboBox, QTextEdit, QTabWidget, QGroupBox, QCheckBox, QDoubleSpinBox,
+                           QMenuBar, QMenu, QMessageBox)
 from PyQt6.QtCore import Qt, QTimer
 from PyQt6.QtGui import QFont, QColor, QPalette
 
 from awos_rvr import AWOS_RVR_System
 from vhf_radio import VHFRadio
 import pyttsx3
+from network_settings import NetworkSettingsDialog
 
 class ATISDisplay(QMainWindow):
     def __init__(self):
@@ -85,6 +87,19 @@ class ATISDisplay(QMainWindow):
             }
         """)
 
+        # Create menu bar
+        menubar = self.menuBar()
+        
+        # File menu
+        file_menu = menubar.addMenu("File")
+        exit_action = file_menu.addAction("Exit")
+        exit_action.triggered.connect(self.close)
+        
+        # Settings menu
+        settings_menu = menubar.addMenu("Settings")
+        network_action = settings_menu.addAction("Network Configuration")
+        network_action.triggered.connect(self.show_network_settings)
+        
         # Create central widget and layout
         central_widget = QWidget()
         self.setCentralWidget(central_widget)
@@ -280,6 +295,10 @@ class ATISDisplay(QMainWindow):
             self.status_label.setText("Status: ATIS information updated")
         except Exception as e:
             self.status_label.setText(f"Error: {str(e)}")
+
+    def show_network_settings(self):
+        dialog = NetworkSettingsDialog(self)
+        dialog.exec()
 
     def closeEvent(self, event):
         """Clean up resources when closing"""
